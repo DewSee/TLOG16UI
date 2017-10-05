@@ -9,37 +9,39 @@
         <link rel="stylesheet" type="text/css" href="style.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="../node_modules/jquery/dist/jquery.min.js"></script>
-        <!--<script type="application/javascript" src="http://livejs.com/live.js"></script>-->
+
+        <script type="application/javascript" src="http://livejs.com/live.js"></script>
     </head>
-    <body>
+    <body onload="loadIndexPageElements()">
         <div id="header">
             <ul id="navBar">
-                <li><a href="">Month view</a></li>
-                <li><a href="dayView.html">Day view</a></li>
+                <li><a href="">Calendar</a></li>
+
             </ul>
         </div>
         <div class="side-bar">
             <table class="table table-bordered" id="monthData">
                 <tr>
                     <td>Req. MinPerMonth</td>
-                    <td>Nothing</td>
+                    <td class="monthStatColumn" id="reqMinPerMonth"></td>
                 </tr>
                 <tr>
                     <td>Sumpermonth</td>
-                    <td>Nothing</td>
+                    <td class="monthStatColumn" id="sumperMonth"></td>
                 </tr>
                 <tr>
                     <td>ExtraMinPerMonth</td>
-                    <td>Nothing</td>
+                    <td class="monthStatColumn" id="extraMinperMonth"></td>
                 </tr>
             </table>
         </div>
         <div id="calendarDiv">
-            <h4 class="actualDate"></h4>
+
+            <h4  id="actualMonth" class="actualDate"></h4>
             <table id="calendar" class="table table-bordered">
                 <thead>
-                    <tr>
-                        <th class="first-col"></th>
+                    <tr id="rowZero">
+
                         <th>Monday</th>
                         <th>Tuesday</th>
                         <th>Wednesday</th>
@@ -50,73 +52,19 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td class="first-col">00</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td class="first-col">00</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td class="first-col">00</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td class="first-col">00</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td class="first-col">00</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td class="first-col">00</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
+                <tr id="row1"></tr>
+                <tr id="row2"></tr>
+                <tr id="row3"></tr>
+                <tr id="row4"></tr>
+                <tr id="row5"></tr>
+                <tr id="row6"></tr>
                 </tbody>
             </table>
 
             <div id="pager-div">
                 <ul class="pager">
-                    <li><a href="#" id="previous-month">Prev.</a></li>
-                    <li><a href="#" id="next-month">Next</a></li>
+                    <li><button type="button" id="previous-month" onclick="clickPreviousMonthButton()">Prev.</button></li>
+                    <li><button type="button" id="next-month" onclick="clickNextMonthButton()">Next</button></li>
                 </ul>
             </div>
         </div>
@@ -125,24 +73,8 @@
             <h4>TimeLogger16 UI</h4>
         </div>
 
-    <script>
 
-
-        $.ajax({
-            type: "GET",
-            url: 'http://localhost:9080/timelogger/workmonths',
-            async:true,
-            crossDomain: true,
-            success: function(data, status, xhr) {
-                $(".actualDate").text(data.toString(data));
-
-            }
-        });
-
-//        $.ajax({url: "http://localhost:9080/timelogger/workmonths", success: function(result){
-//            console.log(result);
-//        }});
-    </script>
+        <script src="script.js"></script>
 
     </body>
 </html>

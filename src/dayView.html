@@ -5,64 +5,66 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <html>
-    <head>
-        <title>TLOG16UI - Tasks</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="style.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <script src="../node_modules/jquery/dist/jquery.min.js"></script>
-    </head>
-    <body>
+<head>
+    <title>TLOG16UI - Tasks</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+</head>
+<body onload="loadTaskTable()">
 
-        <div id="header">
-            <ul id="navBar">
-                <li><a href="monthView.html">Month view</a></li>
-                <li><a href="" class="active-menu">Day view</a></li>
-            </ul>
-        </div>
+<div id="header">
+    <ul id="navBar">
+        <li><a href="index.html">Calendar</a></li>
+    </ul>
+</div>
 
-        <div class="side-bar">
+<div class="side-bar">
 
-            <button type="button" id="new-task-button">New Task</button>
+    <button type="button" id="new-task-button">New Task</button>
 
-            <table class="table table-bordered" id="dayData">
-                <tr>
-                    <td>Req. MinPerDay</td>
-                    <td>Nothing</td>
-                </tr>
-                <tr>
-                    <td>SumPerDay</td>
-                    <td>Nothing</td>
-                </tr>
-                <tr>
-                    <td>extraMinPerDay</td>
-                    <td>Nothing</td>
-                </tr>
-            </table>
+    <table class="table table-bordered" id="dayData">
+        <tr>
+            <td>Req. MinPerDay</td>
+            <td id="reqMinPerDay">Nothing</td>
+        </tr>
+        <tr>
+            <td>SumPerDay</td>
+            <td id="sumPerDay">Nothing</td>
+        </tr>
+        <tr>
+            <td>extraMinPerDay</td>
+            <td id="extraMinPerDay">Nothing</td>
+        </tr>
+    </table>
 
-        </div>
-        <div id="task-table-div">
-            <h4 class="actualDate">Actual day</h4>
-            <table class="table table-bordered" id="task-table">
-                <thead>
-                    <tr>
-                        <th>Task ID</th>
-                        <th>Start time</th>
-                        <th>End time</th>
-                        <th>Comment</th>
-                        <th>Length</th>
-                        <th>Edit</th>
-                    </tr>
-                </thead>
-            </table>
-        </div>
+</div>
+<div id="task-table-div">
+    <h4 class="actualDate" id="actualDay">Actual day</h4>
+    <table class="table table-bordered" id="task-table" onload="drawTaskTable()">
+        <thead>
+        <tr>
+            <th>Task ID</th>
+            <th>Start time</th>
+            <th>End time</th>
+            <th>Comment</th>
+            <th>Length</th>
+            <th>Edit</th>
+        </tr>
+        </thead>
+        <tbody>
 
-        <div id="footer">
-            <h4>TimeLogger16 UI</h4>
-        </div>
+        </tbody>
+    </table>
+</div>
 
+<div id="footer">
+    <h4>TimeLogger16 UI</h4>
+</div>
 
+<script src="script.js"></script>
 
-    </body>
+</body>
 </html>
