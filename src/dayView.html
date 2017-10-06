@@ -12,6 +12,7 @@ and open the template in the editor.
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script type="application/javascript" src="http://livejs.com/live.js"></script>
 </head>
 <body onload="loadTaskTable()">
 
@@ -23,22 +24,46 @@ and open the template in the editor.
 
 <div class="side-bar">
 
-    <button type="button" id="new-task-button">New Task</button>
+    <button type="button" id="newTaskButton">New Task</button>
+    <div id="newTaskModal" class="modal">
 
-    <table class="table table-bordered" id="dayData">
-        <tr>
-            <td>Req. MinPerDay</td>
-            <td id="reqMinPerDay">Nothing</td>
-        </tr>
-        <tr>
-            <td>SumPerDay</td>
-            <td id="sumPerDay">Nothing</td>
-        </tr>
-        <tr>
-            <td>extraMinPerDay</td>
-            <td id="extraMinPerDay">Nothing</td>
-        </tr>
-    </table>
+        <div class="newTaskModalContent">
+            <div id="newTaskModalHeader">
+                <span class="close">&times;</span>
+                <h4>Add new task</h4>
+            </div>
+            <div id="newTaskModalBody">
+                <div id="classContainter">
+                <form action="newTaskForm" id="newTaskForm">
+                    <label for="formTaskID">Task ID</label>
+                    <input type="text" id="formTaskID" name=taskId, placeholder="Task ID">
+                    <label for="formStartTime">Start time</label>
+                    <input type="text" id="formStartTime" name=startTime, placeholder="Start time">
+                    <label for="formComment">Comment</label>
+                    <input type="text" id="formComment" name=comment, placeholder="Comment">
+
+                    <input type="submit" value="Create">
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<table class="table table-bordered" id="dayData">
+    <tr>
+        <td>Req. MinPerDay</td>
+        <td id="reqMinPerDay"></td>
+    </tr>
+    <tr>
+        <td>SumPerDay</td>
+        <td id="sumPerDay">/td>
+    </tr>
+    <tr>
+        <td>extraMinPerDay</td>
+        <td id="extraMinPerDay"></td>
+    </tr>
+</table>
 
 </div>
 <div id="task-table-div">

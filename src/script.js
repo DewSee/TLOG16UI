@@ -145,21 +145,44 @@ $(document).ready(function () {
         if($(this).text().length > 1){
             window.location.href = "dayView.html"
         }else{
-            //TODO: FINISH POST/WORKDAY
-            // $.ajax({
-            //     type: "POST",
-            //     url : 'http://localhost:9080/timelogger/workmonths/workdays',
-            //     contentType: "application/json; charset=utf-8",
-            //     dataType: "json",
-            //     async: true,
-            //     crossDomain: true,
-            //     succes: function (data) {
-            //
-            //     }
-            // })
-        }
 
+            var workDayBean = {
+                "year": selectedYear,
+                "month": selectedMonth,
+                "day": selectedDay
+            }
+
+            $.ajax({
+                type: "POST",
+                url : 'http://localhost:9090/tlog-backend/timelogger/workmonths/workdays',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: JSON.stringify(workDayBean),
+                traditional: true,
+                async: true,
+                crossDomain: true,
+                success: function (data) {
+                    window.location.href = "dayView.html"
+                }
+            })
+        }
     });
+
+    $('#newTaskButton').click(function () {
+        $('#newTaskModal').css("display", "inline");
+    });
+
+
+
+    $('.close').click(function () {
+        $('#newTaskModal').css("display", "none");
+    });
+
+    $(window).click(function() {
+        if (event.target == $('.modal')) {
+            $('#newTaskModal').css("display", "none");
+        }
+    })
 
 });
 
@@ -205,3 +228,7 @@ function loadTaskTable() {
         });
     })
 }
+
+
+
+
